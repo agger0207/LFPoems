@@ -11,7 +11,7 @@
 
 @interface LFPoemContentCell ()
 
-@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UILabel *longestContentLabel;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *poetLabel;
 @property (nonatomic, strong) NSMutableArray<UILabel *> *contentLabels;
@@ -41,19 +41,24 @@
 //        NSArray *paragraphs = @[@"床前明月光，疑是地上霜。", @"举头望明月，低头思故乡。"];
 //        月下独酌\r\n\r\n李白\r\n\r\n花间一壶酒，独酌无相亲。举杯邀明月，对影成三人。月既不解饮，影徒随我身。暂伴月将影，行乐须及春。我歌月徘徊，我舞影零乱。醒时同交欢，醉后各分散。永结无情游，相期邈云汉。
         NSArray *paragraphs = @[
-                                @"花间一壶酒，独酌无相亲。",
-                                @"举杯邀明月，对影成三人。",
+                                @"这是",
+                                @"明月，对影成三人。",
                                 @"月既不解饮，影徒随我身。",
                                 @"暂伴月将影，行乐须及春。",
                                 @"我歌月徘徊，我舞影零乱。",
                                 @"醒时同交欢，醉后各分散。",
                                 @"永结无情游，相期邈云汉。"
                                 ];
+        
+        NSInteger maxContentLen = 0;
         for (NSString *content in paragraphs) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
             label.font = [UIFont systemFontOfSize:15];
             label.textAlignment = NSTextAlignmentCenter;
             label.text = content;
+            if (content.length > maxContentLen) {
+                _longestContentLabel = label;
+            }
             [_contentLabels addObject:label];
         }
         
@@ -72,12 +77,17 @@
             make.height.mas_equalTo(30);
             make.centerX.mas_equalTo(self.contentView.mas_centerX).with.offset(0);
         }];
+        [_longestContentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+           make.centerX.mas_equalTo(self.contentView.mas_centerX).with.offset(0);
+        }];
         UILabel *previousLabel = _poetLabel;
         for (UILabel *label in _contentLabels) {
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(previousLabel.mas_bottom).with.offset(0);
                 make.height.mas_equalTo(24);
-                make.centerX.mas_equalTo(self.contentView.mas_centerX).with.offset(0);
+                if (label != _longestContentLabel) {
+                    make.left.mas_equalTo(_longestContentLabel.mas_left).with.offset(0);
+                }
             }];
             previousLabel = label;
         }

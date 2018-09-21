@@ -120,11 +120,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.cellsArray count];
 }
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    LFPoemDetailBaseCell *cell = (LFPoemDetailBaseCell *)[self.cellsArray objectAtIndex:indexPath.row];
-//    return [cell isKindOfClass:[LFPoemDetailBaseCell class]] ? [cell height] : 44;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.cellsArray objectAtIndex:indexPath.row];
