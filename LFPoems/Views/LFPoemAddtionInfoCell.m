@@ -20,6 +20,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         _label = [[UILabel alloc] initWithFrame:CGRectZero];
         _label.font = [UIFont systemFontOfSize:18];
         _label.textAlignment = NSTextAlignmentCenter;

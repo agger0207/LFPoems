@@ -42,6 +42,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
+    self.tableView.allowsSelection = FALSE;
 //    [self.view addSubview:self.controlBar];
     [self setupConstraints];
     [self loadCells];
@@ -131,6 +132,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.allowsSelection = FALSE;
     }
     
     return _tableView;

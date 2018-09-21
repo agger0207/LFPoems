@@ -11,7 +11,9 @@
 
 @interface LFPoemContentCell ()
 
-@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *poetLabel;
 
 @end
 
@@ -20,13 +22,20 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        _label = [[UILabel alloc] initWithFrame:CGRectZero];
-//        _label.font = [UIFont systemFontOfSize:18];
-//        _label.textAlignment = NSTextAlignmentCenter;
-//        _label.lineBreakMode = NSLineBreakByWordWrapping;
-//        _label.numberOfLines = 0;
-//        _label.text = @"静夜思\r\n\r\n李白\r\n\r\n床前明月光，疑是地上霜。\r\n\r\n举头望明月，低头思故乡。";
-
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.text = @"静夜思";
+        
+        _poetLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _poetLabel.font = [UIFont systemFontOfSize:14];
+        _poetLabel.textAlignment = NSTextAlignmentCenter;
+        _poetLabel.textColor = [UIColor grayColor];
+        _poetLabel.text = @"李白";
+        
         NSString *content = @"床前明月光，疑是地上霜。举头望明月，低头思故乡。";
         NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
 //        paragraph.lineBreakMode = NSLineBreakByCharWrapping;
@@ -44,30 +53,31 @@
         CGSize stringSize = [lineContent boundingRectWithSize:CGSizeMake(200, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
         NSLog(@"stringSize is %f", stringSize.width);
         NSAttributedString *attribute = [[NSAttributedString alloc] initWithString:content attributes:dict];
-        _label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, stringSize.width, stringSize.height)];
-        _label.textAlignment = NSTextAlignmentCenter;
-        _label.backgroundColor = [UIColor brownColor];
-        _label.attributedText = attribute;
-        _label.numberOfLines = 0;
+        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, stringSize.width, stringSize.height)];
+        _contentLabel.textAlignment = NSTextAlignmentCenter;
+        _contentLabel.backgroundColor = [UIColor brownColor];
+        _contentLabel.attributedText = attribute;
+        _contentLabel.numberOfLines = 0;
         
-        [self addSubview:_label];
-        
-        [_label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_label.superview.mas_top).with.offset(0);
-//            make.left.equalTo(_label.superview.mas_left).with.offset(0);
-            make.centerX.mas_equalTo(_label.superview.mas_centerX).with.offset(0);
-//            make.width.mas_equalTo(stringSize.width + 20);
-            make.width.mas_equalTo(stringSize.width);
-            make.bottom.equalTo(_label.superview.mas_bottom).with.offset(0);
-//            make.right.equalTo(_label.superview.mas_right).with.offset(0);
+        [self addSubview:_titleLabel];
+        [self addSubview:_contentLabel];
+        [self addSubview:_poetLabel];
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_titleLabel.superview.mas_top).with.offset(0);
+            make.height.mas_equalTo(32);
+            make.centerX.mas_equalTo(_titleLabel.superview.mas_centerX).with.offset(0);
         }];
-        
-//        [_label mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(_label.superview.mas_top).with.offset(0);
-//            make.left.equalTo(_label.superview.mas_left).with.offset(0);
-//            make.bottom.equalTo(_label.superview.mas_bottom).with.offset(0);
-//            make.right.equalTo(_label.superview.mas_right).with.offset(0);
-//        }];
+        [_poetLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_titleLabel.mas_bottom).with.offset(0);
+            make.height.mas_equalTo(20);
+            make.centerX.mas_equalTo(_poetLabel.superview.mas_centerX).with.offset(0);
+        }];
+        [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_poetLabel.mas_bottom).with.offset(6);
+            make.bottom.equalTo(_contentLabel.superview.mas_bottom).with.offset(0);
+            make.centerX.mas_equalTo(_contentLabel.superview.mas_centerX).with.offset(0);
+            make.width.mas_equalTo(stringSize.width);
+        }];
     }
     
     return self;

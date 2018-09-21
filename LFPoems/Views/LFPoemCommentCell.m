@@ -20,6 +20,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         _commentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _commentLabel.font = [UIFont systemFontOfSize:18];
         _commentLabel.textAlignment = NSTextAlignmentCenter;
