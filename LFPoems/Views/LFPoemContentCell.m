@@ -38,7 +38,17 @@
         _poetLabel.textColor = [UIColor grayColor];
         _poetLabel.text = @"李白";
         
-        NSArray *paragraphs = @[@"床前明月光，疑是地上霜。", @"举头望明月，低头思故乡。"];
+//        NSArray *paragraphs = @[@"床前明月光，疑是地上霜。", @"举头望明月，低头思故乡。"];
+//        月下独酌\r\n\r\n李白\r\n\r\n花间一壶酒，独酌无相亲。举杯邀明月，对影成三人。月既不解饮，影徒随我身。暂伴月将影，行乐须及春。我歌月徘徊，我舞影零乱。醒时同交欢，醉后各分散。永结无情游，相期邈云汉。
+        NSArray *paragraphs = @[
+                                @"花间一壶酒，独酌无相亲。",
+                                @"举杯邀明月，对影成三人。",
+                                @"月既不解饮，影徒随我身。",
+                                @"暂伴月将影，行乐须及春。",
+                                @"我歌月徘徊，我舞影零乱。",
+                                @"醒时同交欢，醉后各分散。",
+                                @"永结无情游，相期邈云汉。"
+                                ];
         for (NSString *content in paragraphs) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
             label.font = [UIFont systemFontOfSize:15];
@@ -47,30 +57,34 @@
             [_contentLabels addObject:label];
         }
         
-        [self addSubview:_titleLabel];
-        [self addSubview:_poetLabel];
+        [self.contentView addSubview:_titleLabel];
+        [self.contentView addSubview:_poetLabel];
         for (UILabel *label in _contentLabels) {
-            [self addSubview:label];
+            [self.contentView addSubview:label];
         }
         [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_titleLabel.superview.mas_top).with.offset(10);
+            make.top.equalTo(self.contentView.mas_top).with.offset(10);
             make.height.mas_equalTo(32);
-            make.centerX.mas_equalTo(_titleLabel.superview.mas_centerX).with.offset(0);
+            make.centerX.mas_equalTo(self.contentView.mas_centerX).with.offset(0);
         }];
         [_poetLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_titleLabel.mas_bottom).with.offset(0);
             make.height.mas_equalTo(30);
-            make.centerX.mas_equalTo(_poetLabel.superview.mas_centerX).with.offset(0);
+            make.centerX.mas_equalTo(self.contentView.mas_centerX).with.offset(0);
         }];
         UILabel *previousLabel = _poetLabel;
         for (UILabel *label in _contentLabels) {
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(previousLabel.mas_bottom).with.offset(0);
                 make.height.mas_equalTo(24);
-                make.centerX.mas_equalTo(label.superview.mas_centerX).with.offset(0);
+                make.centerX.mas_equalTo(self.contentView.mas_centerX).with.offset(0);
             }];
             previousLabel = label;
         }
+        
+        [previousLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-10);
+        }];
     }
     
     return self;
@@ -90,10 +104,5 @@
 - (void)updateWithPoem:(LFPoem *)poem {
     
 }
-
-- (CGFloat)height {
-    return 168;
-}
-
 
 @end

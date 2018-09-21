@@ -14,6 +14,4 @@
 
 - (void)updateWithPoem:(LFPoem *)poem;
 
-- (CGFloat)height;
-
 @end

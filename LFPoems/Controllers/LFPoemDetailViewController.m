@@ -44,6 +44,10 @@
     [self.view addSubview:self.tableView];
     self.tableView.allowsSelection = FALSE;
 //    [self.view addSubview:self.controlBar];
+//
+//    self.tableView.estimatedRowHeight = 213;
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+//
     [self setupConstraints];
     [self loadCells];
 }
@@ -113,11 +117,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.cellsArray count];
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LFPoemDetailBaseCell *cell = (LFPoemDetailBaseCell *)[self.cellsArray objectAtIndex:indexPath.row];
-    return [cell isKindOfClass:[LFPoemDetailBaseCell class]] ? [cell height] : 44;
-}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    LFPoemDetailBaseCell *cell = (LFPoemDetailBaseCell *)[self.cellsArray objectAtIndex:indexPath.row];
+//    return [cell isKindOfClass:[LFPoemDetailBaseCell class]] ? [cell height] : 44;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.cellsArray objectAtIndex:indexPath.row];
@@ -133,6 +137,8 @@
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.allowsSelection = FALSE;
+        _tableView.estimatedRowHeight = 213;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
     }
     
     return _tableView;

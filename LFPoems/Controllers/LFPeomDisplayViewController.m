@@ -83,6 +83,7 @@
 - (void)loadCells {
     [self refreshCells];
     self.cellsArray = @[self.contentCell, self.commentCell, self.addtionalInfoCell];
+//    self.cellsArray = @[self.contentCell];
 }
 
 - (void)refreshCells {
@@ -119,11 +120,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.cellsArray count];
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LFPoemDetailBaseCell *cell = (LFPoemDetailBaseCell *)[self.cellsArray objectAtIndex:indexPath.row];
-    return [cell isKindOfClass:[LFPoemDetailBaseCell class]] ? [cell height] : 44;
-}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    LFPoemDetailBaseCell *cell = (LFPoemDetailBaseCell *)[self.cellsArray objectAtIndex:indexPath.row];
+//    return [cell isKindOfClass:[LFPoemDetailBaseCell class]] ? [cell height] : 44;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.cellsArray objectAtIndex:indexPath.row];
@@ -168,6 +169,8 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.estimatedRowHeight = 200;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
     }
     
     return _tableView;
