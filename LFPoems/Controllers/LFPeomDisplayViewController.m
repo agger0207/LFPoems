@@ -82,8 +82,8 @@
 
 - (void)loadCells {
     [self refreshCells];
-    self.cellsArray = @[self.contentCell, self.commentCell, self.addtionalInfoCell];
-//    self.cellsArray = @[self.contentCell];
+//    self.cellsArray = @[self.contentCell, self.commentCell, self.addtionalInfoCell];
+    self.cellsArray = @[self.contentCell];
 }
 
 - (void)refreshCells {
@@ -95,8 +95,9 @@
 #pragma mark - Update Data 
 
 - (void)updateToPoem:(LFPoem *)poem {
-    // 调到下一首或者上一首
-    NSLog(@"%@", poem.title);
+    self.navigationItem.title = poem.title;
+    [self.contentCell updateWithPoem:poem];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Action

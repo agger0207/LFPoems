@@ -11,7 +11,7 @@
 #import "LFPoem.h"
 #import "LFPoet.h"
 
-NSInteger const maxLengthOneLine = 20;
+NSInteger const maxLengthOneLine = 18;
 
 @interface LFPoemContentCell ()
 
@@ -99,6 +99,7 @@ NSInteger const maxLengthOneLine = 20;
         label.textAlignment = NSTextAlignmentCenter;
         label.text = content;
         if (content.length > maxContentLen && content.length < maxLengthOneLine) {
+            maxContentLen = content.length;
             self.longestContentLabel = label;
         }
         [self.contentLabels addObject:label];
@@ -130,11 +131,31 @@ NSInteger const maxLengthOneLine = 20;
     self.titleLabel.text = poem.title;
     self.poetLabel.text = poem.poet.name;
     NSLog(@"content: %@", poem.content);
-    self.paragraphs = [poem.content componentsSeparatedByString: @"\n"];
-    NSLog(@"paragraphs: %lu", self.paragraphs.count);
-    for (NSString *paragraph in self.paragraphs) {
+    NSArray *paragraphs = [poem.content componentsSeparatedByString: @"\n"];
+    NSMutableArray *normalizedParagraphs = [[NSMutableArray alloc] init];
+    NSLog(@"paragraphs: %lu", paragraphs.count);
+    for (NSString *paragraph in paragraphs) {
         NSLog(@"paragraph: %@", paragraph);
+        if (paragraph.length >= maxLengthOneLine) {
+            NSRange range;
+            if ([paragraph containsString:@"？"]) {
+                // TODO: 丈夫誓许国，愤惋复何有？功名图麒麟，战骨当速朽。应该分为两句而不是四句
+                range = [paragraph rangeOfString:@"？" options:NSBackwardsSearch];
+            } else if ([paragraph containsString:@"，"]) {
+                // TODO: 五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。应该分为两句而不是四句
+                range = [paragraph rangeOfString:@"，" options:NSBackwardsSearch];
+            }
+            
+            if (range.location > 0) {
+                [normalizedParagraphs addObject:[paragraph substringToIndex:range.location + 1]];
+                [normalizedParagraphs addObject:[paragraph substringFromIndex:range.location + 1]];
+            }
+        } else {
+            [normalizedParagraphs addObject:paragraph];
+        }
     }
+    
+    self.paragraphs = normalizedParagraphs;
     [self showPoemContent:self.paragraphs];
 }
 
