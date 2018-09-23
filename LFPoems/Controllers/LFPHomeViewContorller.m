@@ -14,12 +14,13 @@
 #import "LFPoet.h"
 #import "Masonry.h"
 #import "LFPoemTestHelper.h"
+#import "LFPoem+LFStorage.h"
 
 @interface LFPHomeViewContorller () <UITableViewDataSource, UITableViewDelegate, LFPoemActionDelegate>
 
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSArray *poetList;
-@property (nonatomic, strong) NSDictionary *poemDic;
+@property (nonatomic, strong) NSDictionary<NSString *, NSArray *> *poemDic;
 
 @end
 
@@ -81,20 +82,22 @@
     });
 }
 
-- (NSString *)poemNameInSection:(NSInteger)section {
+- (NSString *)poetNameInSection:(NSInteger)section {
     return section < [self.poetList count] ? [self.poetList objectAtIndex:section] : nil;
 }
 
-- (NSArray *)poemsOfPoet:(NSString *)poemName {
-    return [self.poemDic objectForKey:poemName];
+- (NSArray *)poemsOfPoet:(NSString *)poetName {
+    return [self.poemDic objectForKey:poetName];
 }
 
 - (LFPoem *)poemAtRow:(NSInteger)row inSection:(NSInteger)section {
-    NSArray *poems = [self poemsOfPoet:[self poemNameInSection:section]];
+    NSArray *poems = [self poemsOfPoet:[self poetNameInSection:section]];
     return row < [poems count] ? [poems objectAtIndex:row] : nil;
 }
 
 - (NSDictionary *)loadPoemsInfo {
+    return [LFPoem lf_loadPoems];
+    
 #ifdef DEBUG
     return [LFPoemTestHelper poemsForTest];
     
@@ -112,7 +115,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *poems = [self poemsOfPoet:[self poemNameInSection:section]];
+    NSArray *poems = [self poemsOfPoet:[self poetNameInSection:section]];
     return [poems count];
 }
 
