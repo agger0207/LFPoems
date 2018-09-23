@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035508AE2157569F00D819E0 /* tangshi.db in Resources */ = {isa = PBXBuildFile; fileRef = 035508AD2157569F00D819E0 /* tangshi.db */; };
 		037D5BFE1C8BD67600760BB7 /* LFPoemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D5BFD1C8BD67600760BB7 /* LFPoemDetailViewController.m */; };
 		037D5C011C8BD7D900760BB7 /* LFPoemShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D5C001C8BD7D900760BB7 /* LFPoemShowViewController.m */; };
 		03C3A9BB1C1BBA2800D0C121 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C3A9BD1C1BBA2800D0C121 /* Localizable.strings */; };
@@ -89,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		028A901387A117766DD2ECF8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		035508AD2157569F00D819E0 /* tangshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = tangshi.db; path = Utils/Database/tangshi.db; sourceTree = "<group>"; };
 		037D5BFC1C8BD67600760BB7 /* LFPoemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFPoemDetailViewController.h; path = Controllers/LFPoemDetailViewController.h; sourceTree = "<group>"; };
 		037D5BFD1C8BD67600760BB7 /* LFPoemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFPoemDetailViewController.m; path = Controllers/LFPoemDetailViewController.m; sourceTree = "<group>"; };
 		037D5BFF1C8BD7D900760BB7 /* LFPoemShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFPoemShowViewController.h; path = Controllers/LFPoemShowViewController.h; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		E6DE0CCB1C1AECD90066017B /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				035508AD2157569F00D819E0 /* tangshi.db */,
 				E6DE0CD41C1AF0070066017B /* LFPoems.sql */,
 				E6DE0CCC1C1AED650066017B /* LFDatabaseHelper.h */,
 				E6DE0CCD1C1AED650066017B /* LFDatabaseHelper.m */,
@@ -604,6 +607,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035508AE2157569F00D819E0 /* tangshi.db in Resources */,
 				03C3A9BB1C1BBA2800D0C121 /* Localizable.strings in Resources */,
 				03E6E3BF1CC2AD8B00C25546 /* video.mp4 in Resources */,
 				E6DE0C5A1C1AE77F0066017B /* LaunchScreen.storyboard in Resources */,
