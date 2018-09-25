@@ -8,6 +8,7 @@
 
 #import "LFPeomDisplayViewController.h"
 
+// 推荐页或者随机页
 @interface LFPRandomViewController : LFPeomDisplayViewController
 
 @end

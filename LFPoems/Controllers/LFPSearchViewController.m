@@ -11,6 +11,7 @@
 #import "LFPoemAuthorInfoCell.h"
 #import "LFPoemTestHelper.h"
 #import "Masonry.h"
+#import "LFPoem+LFStorage.h"
 
 @interface LFPSearchViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -98,11 +99,12 @@
 }
 
 - (NSArray *)searchPoemsWith:(NSString *)searchString {
-    return ([searchString length] == 0) ? [LFPoemTestHelper favoritePoemsForTest] : [LFPoemTestHelper filterPoemsForTest];
-    
-    NSMutableArray *array = [NSMutableArray array];
-#warning TODO 弄成内存中搜索.
-    return array;
+//    return ([searchString length] == 0) ? [LFPoemTestHelper favoritePoemsForTest] : [LFPoemTestHelper filterPoemsForTest];
+//
+//    NSMutableArray *array = [NSMutableArray array];
+//#warning TODO 弄成内存中搜索.
+//    return array;
+    return [LFPoem lf_searchPoems:searchString];
 }
 
 #pragma mark - UITableViewDataSource

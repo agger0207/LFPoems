@@ -8,6 +8,7 @@
 
 #import "LFPoemBaseViewController.h"
 
+// 用于测试，只是测试回忆另一种写法而已，当前可忽略
 @interface LFPoemShowViewController : LFPoemBaseViewController
 
 @end

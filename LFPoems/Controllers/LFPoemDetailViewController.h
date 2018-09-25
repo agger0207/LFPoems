@@ -10,6 +10,7 @@
 
 @class LFPoem;
 
+// 诗歌详情页: TODO: 不记得当时为啥弄这个和LFPeomDisplayViewController重复了
 @interface LFPoemDetailViewController : UIViewController
 
 @property (nonatomic, strong) LFPoem *poem;

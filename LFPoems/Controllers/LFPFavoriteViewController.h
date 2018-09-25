@@ -8,6 +8,7 @@
 
 #import "LFPoemBaseTableViewController.h"
 
+// 收藏页
 @interface LFPFavoriteViewController : LFPoemBaseTableViewController
 
 @end

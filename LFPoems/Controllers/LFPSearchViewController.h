@@ -8,6 +8,7 @@
 
 #import "LFPoemBaseTableViewController.h"
 
+// 搜索页
 @interface LFPSearchViewController : LFPoemBaseTableViewController
 
 @end

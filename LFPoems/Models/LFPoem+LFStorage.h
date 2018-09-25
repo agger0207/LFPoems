@@ -12,4 +12,8 @@
 
 + (NSDictionary<NSString *, NSArray *> *)lf_loadPoems;
 
++ (NSArray *)lf_loadAllPoems;
+
++ (NSArray *)lf_searchPoems:(NSString *)searchTerm;
+
 @end

@@ -56,4 +56,31 @@ NSString * const kColumnModelContent = @"txt";
     return poemsDic;
 }
 
++ (NSArray *)lf_loadAllPoems {
+    NSMutableArray *poems = [[NSMutableArray alloc] init];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", kTablePoems];
+    [LF_POEMS_DB executeQuery:sql result:^(FMResultSet *rs, BOOL *end) {
+        LFPoem *model = [self instanceFromCursor:rs];
+        [poems addObject:model];
+    }];
+    
+    return poems;
+}
+
++ (NSArray *)lf_searchPoems:(NSString *)searchTerm {
+    if (searchTerm.length == 0) {
+        return [self lf_loadAllPoems];
+    }
+    
+    NSMutableArray *poems = [[NSMutableArray alloc] init];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE author = '%@' OR title LIKE '%@%@%@'", kTablePoems, searchTerm, @"%", searchTerm, @"%"];
+    NSLog(@"%@", sql);
+    [LF_POEMS_DB executeQuery:sql result:^(FMResultSet *rs, BOOL *end) {
+        LFPoem *model = [self instanceFromCursor:rs];
+        [poems addObject:model];
+    }];
+    
+    return poems;
+}
+
 @end

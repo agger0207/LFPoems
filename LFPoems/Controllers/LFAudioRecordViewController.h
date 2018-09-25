@@ -8,6 +8,7 @@
 
 #import "LFPoemBaseViewController.h"
 
+// 录音页. 未实现完全，暂时可以忽略，作为后续功能添加
 @interface LFAudioRecordViewController : LFPoemBaseViewController
 
 @end

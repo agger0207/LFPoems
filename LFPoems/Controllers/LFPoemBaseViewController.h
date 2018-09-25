@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// 各Tab页的基类
 @interface LFPoemBaseViewController : UIViewController
 
 - (void)initNavigationItem;
