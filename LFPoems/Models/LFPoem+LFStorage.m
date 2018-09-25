@@ -26,7 +26,13 @@ NSString * const kColumnModelContent = @"txt";
     // TODO: Organize the data better.
     LFPoem *model = [[LFPoem alloc] init];
     model.poemId = [[result stringForColumn:kColumnModelID] integerValue];
-    model.title = [result stringForColumn:kColumnModelTitle];
+    NSString *title = [result stringForColumn:kColumnModelTitle];
+    NSArray *titleArray = [title componentsSeparatedByString:@" "];
+    if (titleArray.count == 2) {
+        model.title = [self isNumber:titleArray[1]] ? title : titleArray[1];
+    } else {
+        model.title = title;
+    }
     NSString *authorName = [result stringForColumn:kColumnModelAuthor];
     NSString *content = [result stringForColumn:kColumnModelContent];
     LFPoet *poet = [[LFPoet alloc] init];
@@ -81,6 +87,21 @@ NSString * const kColumnModelContent = @"txt";
     }];
     
     return poems;
+}
+
+#pragma mark - Private Methods
+
++ (BOOL)isNumber:(NSString *)title {
+    if (title.length <= 1) {
+        return TRUE;
+    }
+    
+    static NSArray *chineseNumbers = nil;
+    if (chineseNumbers == nil) {
+        chineseNumbers = @[@"十一", @"十二", @"十三", @"十四", @"十五", @"十六", @"十七", @"十八", @"十九", @"二十", @"二十一", @"二十二", @"二十三", @"二十四", @"二十五", @"二十六", @"二十七", @"二十八", @"二十九", @"三十", @"三十一", @"三十二", @"三十三", @"三十四", @"三十五", @"三十六", @"三十七", @"三十八", @"三十九", @"四十", @"四十一", @"四十二", @"四十三", @"四十四", @"四十五", @"四十六", @"四十七", @"四十八", @"四十九", @"五十"];
+    }
+
+    return [chineseNumbers containsObject:title];
 }
 
 @end

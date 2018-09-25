@@ -62,9 +62,7 @@
 - (void)setupSearchView {
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     searchBar.placeholder = @"输入作者或者标题作为关键词搜索";
-    // Note: 内存中搜索和去数据库中搜索的处理方式稍有不同.
     searchBar.delegate = self;
-//    [searchBar sizeToFit];
     self.tableView.tableHeaderView = searchBar;
     
     UISearchDisplayController *controller = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
@@ -77,7 +75,6 @@
 #pragma mark - Data Load
 
 - (void)loadTableView {
-#warning TODO display last search result if possible.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSArray *poems = [self searchPoemsWith:@""];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -99,11 +96,6 @@
 }
 
 - (NSArray *)searchPoemsWith:(NSString *)searchString {
-//    return ([searchString length] == 0) ? [LFPoemTestHelper favoritePoemsForTest] : [LFPoemTestHelper filterPoemsForTest];
-//
-//    NSMutableArray *array = [NSMutableArray array];
-//#warning TODO 弄成内存中搜索.
-//    return array;
     return [LFPoem lf_searchPoems:searchString];
 }
 
@@ -153,6 +145,13 @@
     self.filterPoems = [self searchPoemsWith:searchBar.text];
     UITableView *newTable = self.searchController.searchResultsTableView;
     [newTable reloadData];
+}
+
+#pragma mark - UISearchDisplayDelegate
+
+- (void)searchDisplayController: (UISearchDisplayController *)controller
+ willShowSearchResultsTableView: (UITableView *)searchTableView {
+    searchTableView.rowHeight = self.tableView.rowHeight;
 }
 
 @end
