@@ -12,6 +12,7 @@
 #import "LFPoemTestHelper.h"
 #import "LFPoet.h"
 #import "LFPoem.h"
+#import "LFPoem+LFStorage.h"
 
 @interface LFPFavoriteViewController ()
 
@@ -74,15 +75,8 @@
 
 // TODO: 这个页面要引入刷新机制. 可以用NotificationCenter. 或者直接用一个全局变量判断即可.
 - (NSArray *)favoritePoems {
-#ifdef DEBUG
-    
-    return [LFPoemTestHelper favoritePoemsForTest];
-    
-#endif
-    
-    NSMutableArray *array = [NSMutableArray array];
-#warning TODO
-    return array;
+    // TODO: 展示空Table Review的提示.
+    return [LFPoem lf_loadFavoritePoems];
 }
 
 #pragma mark - UITableViewDataSource

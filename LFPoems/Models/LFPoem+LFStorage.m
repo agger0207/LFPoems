@@ -91,7 +91,7 @@ NSString * const kColumeModelTags = @"tags";
 }
 
 - (BOOL)lf_markAsFavorite:(BOOL)isFavorite {
-    if (self.isFavorite ^ isFavorite) {
+    if (!(self.isFavorite ^ isFavorite)) {
         NSLog(@"Unnecessary to update database");
         return YES;
     }

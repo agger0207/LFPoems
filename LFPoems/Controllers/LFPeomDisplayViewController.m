@@ -14,8 +14,7 @@
 #import "LFPoemAddtionInfoCell.h"
 #import "Masonry.h"
 #import "LFPoemDetailBaseCell.h"
-
-#import "LFPoemShowViewController.h"
+#import "LFPoem+LFStorage.h"
 
 @interface LFPeomDisplayViewController () <UITableViewDataSource, UITableViewDelegate, LFPoemControlBarDelegate>
 
@@ -61,7 +60,7 @@
 - (void)initNavigationItem {
     self.navigationItem.title = self.poem.title;
     [self addLeftButtonWithTitle:@"目录"];
-    [self addRightButtonWithTitle:@"收藏"];
+    [self addRightButtonWithTitle:self.poem.isFavorite ? @"取消收藏" : @"收藏"];
 }
 
 - (void)setupConstraints {
@@ -103,17 +102,8 @@
 #pragma mark - Action
 
 - (IBAction)onClickRightBtn:(id)sender {
-#warning 缓存的处理
-    self.poem.isFavorite = YES;
-    
-#ifdef DEBUG
-    
-    LFPoemShowViewController *controller = [[LFPoemShowViewController alloc] init];
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
-    
-    
-#endif
+    [self.poem lf_markAsFavorite:YES];
+    self.navigationItem.rightBarButtonItem.title = self.poem.isFavorite ? @"取消收藏" : @"收藏";
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
