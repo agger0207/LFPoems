@@ -16,4 +16,14 @@
 
 + (NSArray *)lf_searchPoems:(NSString *)searchTerm;
 
++ (NSArray *)lf_loadRecommendedPoems;
+
++ (NSArray *)lf_loadRandomPoems;
+
++ (NSArray *)lf_loadFavoritePoems;
+
+- (BOOL)lf_markAsFavorite:(BOOL)isFavorite;
+
+- (BOOL)lf_markAsRecommended:(BOOL)isRecommended;
+
 @end

@@ -72,6 +72,7 @@
     return poem;
 }
 
+// TODO: 这个页面要引入刷新机制. 可以用NotificationCenter. 或者直接用一个全局变量判断即可.
 - (NSArray *)favoritePoems {
 #ifdef DEBUG
     

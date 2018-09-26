@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, LFPoemType) {
 @property (nonatomic, copy) NSString *explanation;
 
 @property (nonatomic, assign) BOOL isFavorite;
+@property (nonatomic, assign) BOOL isRecommended;
 
 + (NSString *)stringFromPoemType:(LFPoemType)type;
 
