@@ -53,6 +53,7 @@ NSString * const LFPoemsSqlFile = @"LFPoems.sql";
     }
     
     NSString *dbFilePath = [cacheFolder stringByAppendingPathComponent:[self defaultDBFileName]];
+    NSLog(@"%@", dbFilePath);
     BOOL isDbExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFilePath];
     BOOL isFirstInstall = !isDbExist;
     BOOL bRet = YES;
