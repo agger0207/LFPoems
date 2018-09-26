@@ -138,9 +138,13 @@ NSInteger const maxLengthOneLine = 18;
         NSLog(@"paragraph: %@", paragraph);
         if (paragraph.length >= maxLengthOneLine) {
             NSRange range;
+            // TODO: 对于精选类，需要重新整理段落; 或者根据长度来划分
             if ([paragraph containsString:@"？"]) {
                 // TODO: 丈夫誓许国，愤惋复何有？功名图麒麟，战骨当速朽。应该分为两句而不是四句
                 range = [paragraph rangeOfString:@"？" options:NSBackwardsSearch];
+            } else if ([paragraph containsString:@"！"]) {
+                // TODO: 丈夫誓许国，愤惋复何有？功名图麒麟，战骨当速朽。应该分为两句而不是四句
+                range = [paragraph rangeOfString:@"！" options:NSBackwardsSearch];
             } else if ([paragraph containsString:@"，"]) {
                 // TODO: 五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。应该分为两句而不是四句
                 range = [paragraph rangeOfString:@"，" options:NSBackwardsSearch];

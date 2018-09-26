@@ -8,6 +8,7 @@
 
 #import "LFPRandomViewController.h"
 
+// 重点：1. 数据整理；2. 推荐功能。 3. Tags
 @interface LFPRandomViewController ()
 
 @end
