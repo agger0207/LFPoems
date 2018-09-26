@@ -16,6 +16,7 @@
 #import "LFPoemDetailBaseCell.h"
 #import "LFPoem+LFStorage.h"
 
+// TODO: 界面显示优化
 @interface LFPeomDisplayViewController () <UITableViewDataSource, UITableViewDelegate, LFPoemControlBarDelegate>
 
 @property (nonatomic, strong) NSArray *cellsArray;

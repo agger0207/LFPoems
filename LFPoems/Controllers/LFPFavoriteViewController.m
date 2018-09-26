@@ -14,6 +14,11 @@
 #import "LFPoem.h"
 #import "LFPoem+LFStorage.h"
 
+// TODO: 1. 展示空Table Review的提示.
+// 2. 空Table Review的时候不要有分割线
+// 3. 下拉强制刷新
+// 4. 这个页面要引入刷新机制. 可以用NotificationCenter. 或者直接用一个全局变量判断即可.
+
 @interface LFPFavoriteViewController ()
 
 @property (nonatomic, strong) NSArray *poems;
@@ -73,9 +78,7 @@
     return poem;
 }
 
-// TODO: 这个页面要引入刷新机制. 可以用NotificationCenter. 或者直接用一个全局变量判断即可.
 - (NSArray *)favoritePoems {
-    // TODO: 展示空Table Review的提示.
     return [LFPoem lf_loadFavoritePoems];
 }
 
