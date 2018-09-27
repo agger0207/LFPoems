@@ -9,7 +9,14 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, LFPoemType) {
-    LFPoemTypeFiveMetrical = 1,
+    LFPoemTypeNone = 0, // 无类型
+    LFPoemTypeFiveWordQuatrain = 1, // 五言绝句
+    LFPoemTypeSevenWordQuatrain = 2, // 七言绝句
+    LFPoemTypeFiveWordMetrical = 3, // 五言律诗
+    LFPoemTypeSevenWordMetrical = 4, // 七言律诗
+    LFPoemTypeFiveWordAncient = 5,  // 五言古诗
+    LFPoemTypeSevenWordAncient = 6,  // 七言古诗
+    LFPoemTypeYuefu = 7, // 乐府
 };
 
 @class LFPoet;
