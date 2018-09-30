@@ -55,21 +55,22 @@ static const CGFloat kWidth = 64;
 
 - (void)setupUI {
     _prevBtn = [self generateButtonWithTitle:@"前一首"];
-    _playBtn = [self generateButtonWithTitle:@"播放"];
-    _recordBtn = [self generateButtonWithTitle:@"录制"];
+//    _playBtn = [self generateButtonWithTitle:@"播放"];
+//    _recordBtn = [self generateButtonWithTitle:@"录制"];
     _nextBtn = [self generateButtonWithTitle:@"下一首"];
     
     [_prevBtn addTarget:self action:@selector(onPreBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_playBtn addTarget:self action:@selector(onPlayBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_recordBtn addTarget:self action:@selector(onRecordBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+//    [_playBtn addTarget:self action:@selector(onPlayBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+//    [_recordBtn addTarget:self action:@selector(onRecordBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_nextBtn addTarget:self action:@selector(onNextBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:_prevBtn];
-    [self addSubview:_playBtn];
-    [self addSubview:_recordBtn];
+//    [self addSubview:_playBtn];
+//    [self addSubview:_recordBtn];
     [self addSubview:_nextBtn];
     
-    NSArray *btnList = @[_prevBtn, _playBtn, _recordBtn, _nextBtn];
+//    NSArray *btnList = @[_prevBtn, _playBtn, _recordBtn, _nextBtn];
+    NSArray *btnList = @[_prevBtn, _nextBtn];
     [btnList mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:kPadding leadSpacing:kPadding tailSpacing:kPadding];
     [btnList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).with.offset(0);

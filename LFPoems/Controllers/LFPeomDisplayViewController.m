@@ -172,9 +172,9 @@
     if (nil == _controlBar) {
         _controlBar = [[LFPoemControlBar alloc] initWithFrame:CGRectZero];
         _controlBar.delegate = self;
-#ifdef DEBUG
-        _controlBar.backgroundColor = [UIColor purpleColor];
-#endif
+//#ifdef DEBUG
+//        _controlBar.backgroundColor = [UIColor purpleColor];
+//#endif
     }
     
     return _controlBar;
