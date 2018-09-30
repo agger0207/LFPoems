@@ -80,7 +80,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.poemDic = dic;
             self.poetList = poets;
-            
+
             [self.table reloadData];
         });
     });
@@ -119,7 +119,16 @@
 }
 
 - (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return self.poetList;
+    NSLog(@"poem count: %@", @(self.poetList.count));
+//    self.poetList[0] = @"   \(self.poetList[0])";
+    NSMutableArray *indexTitles = [NSMutableArray arrayWithArray:self.poetList];
+    // 增加第一个字符串的长度，否则其他较长的字符串无法完整展示
+    if (indexTitles.count > 0) {
+        indexTitles[0] = [NSString stringWithFormat:@"%@%@", indexTitles[0], indexTitles[0]];
+        NSLog(@"index Title: %@", indexTitles[0]);
+    }
+    return indexTitles;
+//    return self.poetList;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
