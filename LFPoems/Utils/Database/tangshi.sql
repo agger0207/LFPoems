@@ -318,9 +318,23 @@ OR title = '独不见'
 OR title = '烈女操'
 OR title = '游子吟'
 
-// 更正
+// 更正1
 UPDATE poem SET recommended = 0, type= 0 WHERE title = '古意' AND author != '李颀'
 UPDATE poem SET recommended = 0, type= 0 WHERE title = '关山月' AND author != '李白'
 UPDATE poem SET recommended = 0, type= 0 WHERE title = '宫词'
 AND author != '张祜' AND author != '' AND author != '顾况' AND author != '薛逢'
+
+// 更正2
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '送别' AND author != '王维'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '江南曲' AND author != '李益'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '杂诗' AND author != '王维'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '落花' AND author != '李商隐'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '蝉' AND author != '李商隐'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '闺怨' AND author != '王昌龄'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '春词' AND author != '刘禹锡'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '遣怀' AND author != '杜牧'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '寒食' AND author != '韩翃'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '春怨' AND author != '刘方平' AND author != '金昌绪'
+
+
 
