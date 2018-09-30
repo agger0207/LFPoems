@@ -60,18 +60,19 @@ NSString * const kColumeModelWasDisplayed = @"displayed";
 }
 
 // 全部诗.
-+ (NSArray *)lf_loadAllPoems {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", kTablePoems];
++ (NSArray *)lf_loadAllPoems:(NSInteger)offset {
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER by recommended DESC, id ASC LIMIT 100 offset %@", kTablePoems, @(offset)];
+    NSLog(@"sql: %@", sql);
     return [self loadPoemsWithSql:sql];
 }
 
 // 搜索. 用于全唐诗页面.
-+ (NSArray *)lf_searchPoems:(NSString *)searchTerm {
++ (NSArray *)lf_searchPoems:(NSString *)searchTerm offset:(NSInteger)offset {
     if (searchTerm.length == 0) {
-        return [self lf_loadAllPoems];
+        return [self lf_loadAllPoems:offset];
     }
     
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE author = '%@' OR title LIKE '%@%@%@'", kTablePoems, searchTerm, @"%", searchTerm, @"%"];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE author = '%@' OR title LIKE '%@%@%@' ORDER by recommended DESC, id ASC LIMIT 100 offset %@", kTablePoems, searchTerm, @"%", searchTerm, @"%", @(offset)];
     return [self loadPoemsWithSql:sql];
 }
 

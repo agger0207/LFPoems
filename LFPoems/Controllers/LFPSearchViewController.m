@@ -12,6 +12,7 @@
 #import "LFPoemTestHelper.h"
 #import "Masonry.h"
 #import "LFPoem+LFStorage.h"
+#import "MJRefresh.h"
 
 // 加一个LoadMore
 @interface LFPSearchViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
@@ -33,6 +34,7 @@
     [self setupSearchView];
     [self registerCells];
     [self loadTableView];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,7 +99,12 @@
 }
 
 - (NSArray *)searchPoemsWith:(NSString *)searchString {
-    return [LFPoem lf_searchPoems:searchString];
+    return [LFPoem lf_searchPoems:searchString offset:0];
+}
+
+- (void)loadMoreData {
+    NSLog(@"Loading More Data");
+//    self.tableView.mj_footer.hidden = YES;
 }
 
 #pragma mark - UITableViewDataSource

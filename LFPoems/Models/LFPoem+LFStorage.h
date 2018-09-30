@@ -12,9 +12,9 @@
 
 + (NSDictionary<NSString *, NSArray *> *)lf_loadPoems;
 
-+ (NSArray *)lf_loadAllPoems;
++ (NSArray *)lf_loadAllPoems:(NSInteger)offset;
 
-+ (NSArray *)lf_searchPoems:(NSString *)searchTerm;
++ (NSArray *)lf_searchPoems:(NSString *)searchTerm offset:(NSInteger)offset;
 
 + (NSArray *)lf_loadRecommendedPoems;
 
