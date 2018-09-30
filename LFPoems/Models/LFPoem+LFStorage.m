@@ -19,6 +19,7 @@ NSString * const kColumnModelIsFavorite = @"favorite";
 NSString * const kColumnModelIsRecommended = @"recommended";
 NSString * const kColumnModelType = @"type";
 NSString * const kColumeModelTags = @"tags";
+NSString * const kColumeModelWasDisplayed = @"displayed";
 // 代码自动格式化:  快捷键：. ctrl+ i
 
 @implementation LFPoem (LFStorage)
@@ -47,6 +48,7 @@ NSString * const kColumeModelTags = @"tags";
     model.isFavorite = [result boolForColumn:kColumnModelIsFavorite];
     model.isRecommended = [result boolForColumn:kColumnModelIsRecommended];
     model.type = [result intForColumn:kColumnModelType];
+    model.wasDisplayed = [result boolForColumn:kColumeModelWasDisplayed];
     
     return model;
 }
@@ -80,8 +82,15 @@ NSString * const kColumeModelTags = @"tags";
 }
 
 // 每日随机推荐的诗. 一定是从精选中挑一首.
-+ (NSArray *)lf_loadRandomPoems {
-    return [self lf_loadRecommendedPoems];
++ (NSArray *)lf_loadRandomPoems:(BOOL)excludeDisplayed {
+    NSString *sql =[NSString stringWithFormat:@"SELECT * FROM %@ WHERE recommended = 1%@", kTablePoems, excludeDisplayed ? @" AND (displayed != 1 OR displayed is null)" : @""];
+    return [self loadPoemsWithSql:sql];
+}
+
+// 展示之前每日推荐过的诗
++ (NSArray *)lf_loadDisplayedRandomPoems {
+    NSString *sql =[NSString stringWithFormat:@"SELECT * FROM %@ WHERE recommended = 1 AND displayed = 1", kTablePoems];
+    return [self loadPoemsWithSql:sql];
 }
 
 // 收藏的诗

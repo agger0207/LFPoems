@@ -53,7 +53,7 @@
 #pragma mark - Init UI.
 
 - (void)initNavigationItem {
-    self.navigationItem.title = @"搜索";
+    self.navigationItem.title = @"全部";
 }
 
 - (void)registerCells {

@@ -36,14 +36,14 @@
     LFTabBarItemData *tabBarItemData = [[LFTabBarItemData alloc] init];
     switch (tag) {
         case LFTabItemTagMain:
-            tabBarItemData.title = NSLocalizedString(@"首页", nil);
+            tabBarItemData.title = NSLocalizedString(@"精选", nil);
             tabBarItemData.imageName = @"home";
             tabBarItemData.selectedImageName = @"home_selected";
             tabBarItemData.itemContentController = [LFPHomeViewContorller class];
             break;
             
         case LFTabItemTagSearch:
-            tabBarItemData.title = NSLocalizedString(@"搜索", nil);
+            tabBarItemData.title = NSLocalizedString(@"全唐诗", nil);
             tabBarItemData.imageName = @"home";
             tabBarItemData.selectedImageName = @"home_selected";
             tabBarItemData.itemContentController = [LFPSearchViewController class];
@@ -57,7 +57,7 @@
             break;
             
         case LFTabItemTagRandom:
-            tabBarItemData.title = NSLocalizedString(@"随机", nil);
+            tabBarItemData.title = NSLocalizedString(@"今日推荐", nil);
             tabBarItemData.imageName = @"cart";
             tabBarItemData.selectedImageName = @"cart_selected";
             tabBarItemData.itemContentController = [LFPRandomViewController class];

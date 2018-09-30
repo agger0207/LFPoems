@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, LFPoemType) {
 
 @property (nonatomic, assign) BOOL isFavorite;
 @property (nonatomic, assign) BOOL isRecommended;
+@property (nonatomic, assign) BOOL wasDisplayed;
 
 + (NSString *)stringFromPoemType:(LFPoemType)type;
 

@@ -146,7 +146,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-#warning Display different cell with different segment value.
+#warning 1. Display different cell with different segment value. 2. 展示是否已被收藏
     LFPoem *poem = [self poemAtRow:indexPath.row inSection:indexPath.section];
     LFPoemTypeInfoCell *cell = (LFPoemTypeInfoCell *)[tableView dequeueReusableCellWithIdentifier:[LFPoemTypeInfoCell cellIdentifier]];
     if (nil == cell) {

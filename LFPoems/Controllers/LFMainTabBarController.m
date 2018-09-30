@@ -73,7 +73,7 @@
 #pragma mark - Init TabBar Items
 
 - (void)initTabBarItems {
-    NSArray *tags = @[@(LFTabItemTagMain), @(LFTabItemTagSearch), @(LFTabItemTagFavorite), @(LFTabItemTagRandom), @(LFTabItemTagSetting)];
+    NSArray *tags = @[@(LFTabItemTagMain), @(LFTabItemTagRandom),  @(LFTabItemTagFavorite), @(LFTabItemTagSearch), @(LFTabItemTagSetting)];
     self.viewControllers = [LFUITabBarHelper tabItemControllers:tags];
 }
 

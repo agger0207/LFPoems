@@ -18,7 +18,9 @@
 
 + (NSArray *)lf_loadRecommendedPoems;
 
-+ (NSArray *)lf_loadRandomPoems;
++ (NSArray *)lf_loadRandomPoems:(BOOL)excludeDisplayed;
+
++ (NSArray *)lf_loadDisplayedRandomPoems;
 
 + (NSArray *)lf_loadFavoritePoems;
 
