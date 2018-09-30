@@ -18,6 +18,12 @@
 
 - (NSIndexPath *)prevIndex:(NSIndexPath *)index;
 
+@required
+- (BOOL)isLastIndex:(NSIndexPath *)index;
+
+@required
+- (BOOL)isFirstIndex:(NSIndexPath *)index;
+
 @end
 
 // 诗歌内容展示页

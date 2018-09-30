@@ -39,6 +39,7 @@
     [self.view addSubview:self.controlBar];
     [self setupConstraints];
     [self loadCells];
+    [self.controlBar updateWithPoem:self.poem isFirst:[self.poemDelegate isFirstIndex:self.index] isLast:[self.poemDelegate isLastIndex:self.index]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,9 +130,9 @@
     if ([self.poemDelegate respondsToSelector:@selector(nextIndex:)] &&
         [self.poemDelegate respondsToSelector:@selector(poemAtIndex:)]) {
         self.index = [self.poemDelegate nextIndex:self.index];
-        //        TODO: Check whether it is the last one or first one
         self.poem = [self.poemDelegate poemAtIndex:self.index];
         [self updateToPoem:self.poem];
+        [self.controlBar updateWithPoem:self.poem isFirst:[self.poemDelegate isFirstIndex:self.index] isLast:[self.poemDelegate isLastIndex:self.index]];
     }
 }
 
@@ -139,9 +140,9 @@
     if ([self.poemDelegate respondsToSelector:@selector(prevIndex:)] &&
         [self.poemDelegate respondsToSelector:@selector(poemAtIndex:)]) {
         self.index = [self.poemDelegate prevIndex:self.index];
-        //        TODO: Check whether it is the last one or first one
         self.poem = [self.poemDelegate poemAtIndex:self.index];
         [self updateToPoem:self.poem];
+        [self.controlBar updateWithPoem:self.poem isFirst:[self.poemDelegate isFirstIndex:self.index] isLast:[self.poemDelegate isLastIndex:self.index]];
     }
 }
 

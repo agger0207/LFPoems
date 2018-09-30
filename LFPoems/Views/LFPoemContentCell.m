@@ -150,7 +150,7 @@ NSInteger const maxLengthOneLine = 18;
                 range = [paragraph rangeOfString:@"，" options:NSBackwardsSearch];
             }
             
-            if (range.location > 0) {
+            if (range.location > 0 && paragraph.length > range.location + 1) {
                 [normalizedParagraphs addObject:[paragraph substringToIndex:range.location + 1]];
                 [normalizedParagraphs addObject:[paragraph substringFromIndex:range.location + 1]];
             }

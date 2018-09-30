@@ -18,6 +18,9 @@ static const CGFloat kWidth = 64;
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) UIButton *recordBtn;
 @property (nonatomic, strong) UIButton *nextBtn;
+@property (nonatomic, strong) LFPoem *poem;
+@property (nonatomic, assign) BOOL isFirst;
+@property (nonatomic, assign) BOOL isLast;
 
 @end
 
@@ -120,6 +123,16 @@ static const CGFloat kWidth = 64;
     if ([_delegate respondsToSelector:@selector(moveToNext)]) {
         [_delegate moveToNext];
     }
+}
+
+#pragma mark - Public Methods
+
+- (void)updateWithPoem:(LFPoem *)poem isFirst:(BOOL)isFirst isLast:(BOOL)isLast {
+    self.prevBtn.enabled = !isFirst;
+    self.nextBtn.enabled = !isLast;
+    self.poem = poem;
+    self.isFirst = isFirst;
+    self.isLast = isLast;
 }
 
 @end

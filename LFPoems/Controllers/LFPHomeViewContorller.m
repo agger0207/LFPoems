@@ -175,11 +175,35 @@
 }
 
 - (NSIndexPath *)nextIndex:(NSIndexPath *)indexPath {
+    if (indexPath.row + 1 >= [self tableView:self.table numberOfRowsInSection:indexPath.section]) {
+        return [NSIndexPath indexPathForRow:0 inSection:indexPath.section + 1];
+    }
     return [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
 }
 
 - (NSIndexPath *)prevIndex:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        if (indexPath.section == 0) {
+            return nil;
+        }
+        
+        NSInteger section = indexPath.section - 1;
+        NSInteger row = [self tableView:self.table numberOfRowsInSection:section] - 1;
+        return [NSIndexPath indexPathForRow:row inSection:section];
+    }
     return [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
+}
+
+- (BOOL)isLastIndex:(NSIndexPath *)index {
+    if (index.section + 1 >= [self numberOfSectionsInTableView:self.table]) {
+        return (index.row + 1) >= [self tableView:self.table numberOfRowsInSection:index.section];
+    }
+    
+    return FALSE;
+}
+
+- (BOOL)isFirstIndex:(NSIndexPath *)index {
+    return index.row == 0 && index.section == 0;
 }
 
 #pragma mark - Constraints

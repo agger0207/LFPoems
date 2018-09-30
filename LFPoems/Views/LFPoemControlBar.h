@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class LFPoem;
+
 @protocol LFPoemControlBarDelegate <NSObject>
 
 @optional
@@ -24,5 +26,7 @@
 @interface LFPoemControlBar : UIView
 
 @property (nonatomic, weak) id<LFPoemControlBarDelegate> delegate;
+
+- (void)updateWithPoem:(LFPoem *)poem isFirst:(BOOL)isFirst isLast:(BOOL)isLast;
 
 @end
