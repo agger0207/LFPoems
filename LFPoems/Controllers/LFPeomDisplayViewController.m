@@ -107,7 +107,7 @@
     [self.poem lf_markAsFavorite:!wasFavorite];
     self.navigationItem.rightBarButtonItem.title = self.poem.isFavorite ? @"取消收藏" : @"收藏";
 #ifdef DEBUG
-    [self.poem lf_markAsRecommended:!wasFavorite];
+    [self.poem lf_markAsRecommended:!self.poem.isRecommended];
 #endif
 }
 

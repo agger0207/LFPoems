@@ -60,7 +60,7 @@
 #pragma mark - Init UI.
 
 - (void)initNavigationItem {
-    self.navigationItem.title = @"唐诗";
+    self.navigationItem.title = @"精选";
 }
 
 - (void)registerCells {
@@ -114,7 +114,6 @@
     return [poems count];
 }
 
-#warning GroupStyle Table HeaderView不会浮动了. TODO
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return section < [self.poetList count] ? [self.poetList objectAtIndex:section] : @"";
 }
@@ -189,7 +188,7 @@
 
 - (UITableView *)table {
     if (nil == _table) {
-        _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _table.delegate = self;
         _table.dataSource = self;
     }
