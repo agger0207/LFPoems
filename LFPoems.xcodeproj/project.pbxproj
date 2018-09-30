@@ -36,7 +36,7 @@
 		03EEA2591C1C6C2D0047CD59 /* LFPoemCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EEA2581C1C6C2D0047CD59 /* LFPoemCommentCell.m */; };
 		03EEA25C1C1C6C460047CD59 /* LFPoemAddtionInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EEA25B1C1C6C460047CD59 /* LFPoemAddtionInfoCell.m */; };
 		03EEA25F1C1C72320047CD59 /* LFPoemDetailBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EEA25E1C1C72320047CD59 /* LFPoemDetailBaseCell.m */; };
-		0FC3443E6EE005AE88F06822 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA8F79F74AA986EE508C6E /* libPods.a */; };
+		AEFFEFF9D11FDA805D9BA19A /* libPods-LFPoems.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00F384B606D708CDF74A4D0 /* libPods-LFPoems.a */; };
 		E6DE0C491C1AE77F0066017B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DE0C481C1AE77F0066017B /* main.m */; };
 		E6DE0C4C1C1AE77F0066017B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DE0C4B1C1AE77F0066017B /* AppDelegate.m */; };
 		E6DE0C551C1AE77F0066017B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6DE0C531C1AE77F0066017B /* Main.storyboard */; };
@@ -91,7 +91,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		028A901387A117766DD2ECF8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		034C63C0216072E000D3DB4F /* tangshi.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tangshi.sql; path = Utils/Database/tangshi.sql; sourceTree = "<group>"; };
 		035508AD2157569F00D819E0 /* tangshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = tangshi.db; path = Utils/Database/tangshi.db; sourceTree = "<group>"; };
 		035508AF2157591400D819E0 /* LFPoem+LFStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LFPoem+LFStorage.h"; path = "Models/LFPoem+LFStorage.h"; sourceTree = "<group>"; };
@@ -148,8 +147,9 @@
 		03EEA25B1C1C6C460047CD59 /* LFPoemAddtionInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFPoemAddtionInfoCell.m; path = Views/LFPoemAddtionInfoCell.m; sourceTree = "<group>"; };
 		03EEA25D1C1C72320047CD59 /* LFPoemDetailBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFPoemDetailBaseCell.h; path = Views/LFPoemDetailBaseCell.h; sourceTree = "<group>"; };
 		03EEA25E1C1C72320047CD59 /* LFPoemDetailBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFPoemDetailBaseCell.m; path = Views/LFPoemDetailBaseCell.m; sourceTree = "<group>"; };
-		3C22E7062E60850252D62437 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		81BA8F79F74AA986EE508C6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AAE4EE715EF5C4AAD434C6B /* Pods-LFPoems.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFPoems.release.xcconfig"; path = "Pods/Target Support Files/Pods-LFPoems/Pods-LFPoems.release.xcconfig"; sourceTree = "<group>"; };
+		A00F384B606D708CDF74A4D0 /* libPods-LFPoems.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LFPoems.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD0A679B7D73E2EFC61587F8 /* Pods-LFPoems.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFPoems.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LFPoems/Pods-LFPoems.debug.xcconfig"; sourceTree = "<group>"; };
 		E6DE0C441C1AE77F0066017B /* LFPoems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFPoems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6DE0C481C1AE77F0066017B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E6DE0C4A1C1AE77F0066017B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			files = (
 				03E6E3BD1CC2906100C25546 /* AVFoundation.framework in Frameworks */,
 				03E6E3BB1CC2905900C25546 /* MediaPlayer.framework in Frameworks */,
-				0FC3443E6EE005AE88F06822 /* libPods.a in Frameworks */,
+				AEFFEFF9D11FDA805D9BA19A /* libPods-LFPoems.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,23 +243,23 @@
 			name = Test;
 			sourceTree = "<group>";
 		};
+		47AE112A6100797FBB4FA208 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD0A679B7D73E2EFC61587F8 /* Pods-LFPoems.debug.xcconfig */,
+				3AAE4EE715EF5C4AAD434C6B /* Pods-LFPoems.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6264FFD4C590FB0D95D44144 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				03E6E3BC1CC2906100C25546 /* AVFoundation.framework */,
 				03E6E3BA1CC2905900C25546 /* MediaPlayer.framework */,
-				81BA8F79F74AA986EE508C6E /* libPods.a */,
+				A00F384B606D708CDF74A4D0 /* libPods-LFPoems.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9B478662E7B1FD437EB1A854 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3C22E7062E60850252D62437 /* Pods.debug.xcconfig */,
-				028A901387A117766DD2ECF8 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		E6DE0C3B1C1AE77F0066017B = {
@@ -269,8 +269,8 @@
 				E6DE0C631C1AE77F0066017B /* LFPoemsTests */,
 				E6DE0C6E1C1AE77F0066017B /* LFPoemsUITests */,
 				E6DE0C451C1AE77F0066017B /* Products */,
-				9B478662E7B1FD437EB1A854 /* Pods */,
 				6264FFD4C590FB0D95D44144 /* Frameworks */,
+				47AE112A6100797FBB4FA208 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -511,12 +511,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6DE0C741C1AE77F0066017B /* Build configuration list for PBXNativeTarget "LFPoems" */;
 			buildPhases = (
-				1369D2CBB3977D672015C0AE /* Check Pods Manifest.lock */,
+				844B84E0D2DACC4DEECC6B82 /* [CP] Check Pods Manifest.lock */,
 				E6DE0C401C1AE77F0066017B /* Sources */,
 				E6DE0C411C1AE77F0066017B /* Frameworks */,
 				E6DE0C421C1AE77F0066017B /* Resources */,
-				EFCDB5CD47909EF3C5B50BCF /* Copy Pods Resources */,
-				AC494C232A9601C18753540E /* Embed Pods Frameworks */,
+				038069D5E46A5D27CF701356 /* [CP] Embed Pods Frameworks */,
+				988DD9AD60330ECF4BA2DA3E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -643,49 +643,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1369D2CBB3977D672015C0AE /* Check Pods Manifest.lock */ = {
+		038069D5E46A5D27CF701356 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFPoems/Pods-LFPoems-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC494C232A9601C18753540E /* Embed Pods Frameworks */ = {
+		844B84E0D2DACC4DEECC6B82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EFCDB5CD47909EF3C5B50BCF /* Copy Pods Resources */ = {
+		988DD9AD60330ECF4BA2DA3E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFPoems/Pods-LFPoems-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -894,7 +894,7 @@
 		};
 		E6DE0C751C1AE77F0066017B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C22E7062E60850252D62437 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = DD0A679B7D73E2EFC61587F8 /* Pods-LFPoems.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -911,7 +911,7 @@
 		};
 		E6DE0C761C1AE77F0066017B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 028A901387A117766DD2ECF8 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 3AAE4EE715EF5C4AAD434C6B /* Pods-LFPoems.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
