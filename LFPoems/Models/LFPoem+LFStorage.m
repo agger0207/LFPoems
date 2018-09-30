@@ -104,7 +104,7 @@ NSString * const kColumeModelTags = @"tags";
 
 // 这个功能不开放给用户. 用于我自己来设置数据库用.
 - (BOOL)lf_markAsRecommended:(BOOL)isRecommended {
-    if (self.isRecommended ^ isRecommended) {
+    if (!(self.isRecommended ^ isRecommended)) {
         NSLog(@"Unnecessary to update database");
         return YES;
     }

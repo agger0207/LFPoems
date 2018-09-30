@@ -318,3 +318,9 @@ OR title = '独不见'
 OR title = '烈女操'
 OR title = '游子吟'
 
+// 更正
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '古意' AND author != '李颀'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '关山月' AND author != '李白'
+UPDATE poem SET recommended = 0, type= 0 WHERE title = '宫词'
+AND author != '张祜' AND author != '' AND author != '顾况' AND author != '薛逢'
+
