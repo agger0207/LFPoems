@@ -8,6 +8,7 @@
 
 #import "LFPoemTypeInfoCell.h"
 #import "LFPoem.h"
+#import "LFPoet.h"
 
 @implementation LFPoemTypeInfoCell
 
@@ -23,7 +24,11 @@
 
 - (void)updateWithPoem:(LFPoem *)poem {
     self.textLabel.text = poem.title;
-    self.detailTextLabel.text = [LFPoem stringFromPoemType:poem.type];
+    if ([LFPoem isFamousPoet:poem.poet.name]) {
+        self.detailTextLabel.text = [LFPoem stringFromPoemType:poem.type];
+    } else {
+        self.detailTextLabel.text = poem.poet.name;
+    }
 }
 
 + (NSString *)cellIdentifier {

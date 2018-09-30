@@ -122,10 +122,11 @@ NSString * const kColumeModelTags = @"tags";
     [LF_POEMS_DB executeQuery:sql result:^(FMResultSet *rs, BOOL *end) {
         LFPoem *model = [self instanceFromCursor:rs];
         if (nil != model && nil != model.poet) {
-            NSMutableArray *poems = poemsDic[model.poet.name];
+            NSString *poetKey = [self isFamousPoet:model.poet.name] ? model.poet.name : @"其他";
+            NSMutableArray *poems = poemsDic[poetKey];
             if (nil == poems) {
                 poems = [[NSMutableArray alloc] init];
-                poemsDic[model.poet.name] = poems;
+                poemsDic[poetKey] = poems;
             }
             [poems addObject:model];
         }

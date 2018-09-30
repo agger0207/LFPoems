@@ -73,14 +73,14 @@
 - (void)loadTableView {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *dic = [self loadPoemsInfo];
-        NSArray *poets = [[dic allKeys] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-            return [(NSString *)obj1 compare:obj2 options:0];
-        }];
-        
+//        NSArray *poets = [[dic allKeys] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//            return [(NSString *)obj1 compare:obj2 options:0];
+//        }];
+//
         dispatch_async(dispatch_get_main_queue(), ^{
             self.poemDic = dic;
-            self.poetList = poets;
-
+//            self.poetList = poets;
+            self.poetList = [LFPoem poets];
             [self.table reloadData];
         });
     });
@@ -119,16 +119,16 @@
 }
 
 - (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    NSLog(@"poem count: %@", @(self.poetList.count));
-//    self.poetList[0] = @"   \(self.poetList[0])";
-    NSMutableArray *indexTitles = [NSMutableArray arrayWithArray:self.poetList];
-    // 增加第一个字符串的长度，否则其他较长的字符串无法完整展示
-    if (indexTitles.count > 0) {
-        indexTitles[0] = [NSString stringWithFormat:@"%@%@", indexTitles[0], indexTitles[0]];
-        NSLog(@"index Title: %@", indexTitles[0]);
-    }
-    return indexTitles;
-//    return self.poetList;
+//    NSLog(@"poem count: %@", @(self.poetList.count));
+////    self.poetList[0] = @"   \(self.poetList[0])";
+//    NSMutableArray *indexTitles = [NSMutableArray arrayWithArray:self.poetList];
+//    // 增加第一个字符串的长度，否则其他较长的字符串无法完整展示
+//    if (indexTitles.count > 0) {
+//        indexTitles[0] = [NSString stringWithFormat:@"%@%@", indexTitles[0], indexTitles[0]];
+//        NSLog(@"index Title: %@", indexTitles[0]);
+//    }
+//    return indexTitles;
+    return self.poetList;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {

@@ -36,4 +36,8 @@ typedef NS_ENUM(NSInteger, LFPoemType) {
 
 + (NSString *)stringFromPoemType:(LFPoemType)type;
 
++ (NSArray<NSString *> *)poets;
+
++ (BOOL)isFamousPoet:(NSString *)poetName;
+
 @end

@@ -51,4 +51,12 @@
     return typeDescription;
 }
 
++ (NSArray<NSString *> *) poets {
+    return @[@"孟浩然", @"李白", @"杜甫", @"王维", @"王昌龄", @"王之涣", @"李商隐", @"杜牧", @"白居易", @"岑参", @"柳宗元", @"韩愈", @"崔颢", @"刘禹锡", @"韦应物", @"贺知章", @"其他"];
+}
+
++ (BOOL)isFamousPoet:(NSString *)poetName {
+    return [self.poets containsObject:poetName];
+}
+
 @end
