@@ -150,7 +150,7 @@
     });
 }
 
-// TODO: 在About页面中展示推荐过的诗. 这里只有没有展示过的诗
+// TODO: 1. 在About页面中展示推荐过的诗. 这里只有没有展示过的诗 2. 修改Displayed后需要修改数据库
 - (NSArray *)loadPoemsInfo {
     return [LFPoem lf_loadRandomPoems:TRUE];
 }
@@ -163,7 +163,7 @@
     NSInteger index = arc4random() % count;
     LFPoem *poem =self.candidatePoems[index];
     NSInteger retry = 0;
-    while (retry < 5 && (poem == nil || poem.wasDisplayed)) {
+    while (retry < 10 && (poem == nil || poem.wasDisplayed)) {
         retry ++;
         index = arc4random() % count;
         poem = self.candidatePoems[index];
