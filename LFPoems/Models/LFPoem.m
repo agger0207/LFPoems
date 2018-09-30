@@ -15,7 +15,7 @@
 + (NSString *)stringFromPoemType:(LFPoemType)type {
     NSString *typeDescription;
     switch (type) {
-        case LFPoemTypeFiveMetrical:
+        case LFPoemTypeFiveWordMetrical:
             typeDescription = @"五言律诗";
             break;
             

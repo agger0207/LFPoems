@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034C63C1216072E000D3DB4F /* tangshi.sql in Resources */ = {isa = PBXBuildFile; fileRef = 034C63C0216072E000D3DB4F /* tangshi.sql */; };
 		035508AE2157569F00D819E0 /* tangshi.db in Resources */ = {isa = PBXBuildFile; fileRef = 035508AD2157569F00D819E0 /* tangshi.db */; };
 		035508B12157591400D819E0 /* LFPoem+LFStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 035508B02157591400D819E0 /* LFPoem+LFStorage.m */; };
 		037D5BFE1C8BD67600760BB7 /* LFPoemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D5BFD1C8BD67600760BB7 /* LFPoemDetailViewController.m */; };
@@ -91,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		028A901387A117766DD2ECF8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		034C63C0216072E000D3DB4F /* tangshi.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tangshi.sql; path = Utils/Database/tangshi.sql; sourceTree = "<group>"; };
 		035508AD2157569F00D819E0 /* tangshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = tangshi.db; path = Utils/Database/tangshi.db; sourceTree = "<group>"; };
 		035508AF2157591400D819E0 /* LFPoem+LFStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LFPoem+LFStorage.h"; path = "Models/LFPoem+LFStorage.h"; sourceTree = "<group>"; };
 		035508B02157591400D819E0 /* LFPoem+LFStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LFPoem+LFStorage.m"; path = "Models/LFPoem+LFStorage.m"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		E6DE0CCB1C1AECD90066017B /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				034C63C0216072E000D3DB4F /* tangshi.sql */,
 				035508AD2157569F00D819E0 /* tangshi.db */,
 				E6DE0CD41C1AF0070066017B /* LFPoems.sql */,
 				E6DE0CCC1C1AED650066017B /* LFDatabaseHelper.h */,
@@ -619,6 +622,7 @@
 				E6DE0C571C1AE77F0066017B /* Assets.xcassets in Resources */,
 				E6DE0C551C1AE77F0066017B /* Main.storyboard in Resources */,
 				E6DE0CD51C1AF0070066017B /* LFPoems.sql in Resources */,
+				034C63C1216072E000D3DB4F /* tangshi.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
