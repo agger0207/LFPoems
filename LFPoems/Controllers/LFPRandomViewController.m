@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.currentPoem = [LFPoemTestHelper poemForTest];
     [self.view addSubview:self.tableView];
     [self setupConstraints];
     [self loadCells];
@@ -60,7 +59,6 @@
     [self addRightButtonWithTitle:@"收藏"];
 }
 
-
 - (void)setupConstraints {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).with.offset(0);
@@ -71,12 +69,7 @@
 }
 
 - (void)loadCells {
-    [self refreshCells];
     self.cellsArray = @[self.contentCell];
-}
-
-- (void)refreshCells {
-    [self.contentCell updateWithPoem:self.currentPoem];
 }
 
 - (void)updateToPoem:(LFPoem *)poem {
@@ -134,6 +127,7 @@
 
 - (IBAction)onClickLeftButton:(id)sender {
     self.currentPoem = [self randomSelectPoem];
+    [self updateToPoem:self.currentPoem];
 }
 
 - (IBAction)onClickRightBtn:(id)sender {
@@ -149,7 +143,6 @@
         NSArray *poems = [self loadPoemsInfo];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.candidatePoems = poems;
-            NSLog(@"Poem is Load: %@", poems);
             self.currentPoem = [self randomSelectPoem];
             self.currentPoem.wasDisplayed = YES;
             [self updateToPoem:self.currentPoem];
