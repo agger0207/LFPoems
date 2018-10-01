@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *poems;
 @property (nonatomic, strong) NSArray *filterPoems;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
+@property (nonatomic, copy) NSString *currentSearchTerm;
 
 @end
 
@@ -113,6 +114,24 @@
     });
 }
 
+- (void)loadMoreSearchData {
+    if (self.filterPoems.count % 100 != 0) {
+        // 已经全部加载完毕，不需要展示Load More
+        self.searchController.searchResultsTableView.mj_footer.hidden = TRUE;
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *poems = [self searchPoemsWith:self.currentSearchTerm offset:self.filterPoems.count];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.filterPoems = [self.filterPoems arrayByAddingObjectsFromArray:poems];
+            UITableView *searchResultTableView = self.searchController.searchResultsTableView;
+            [searchResultTableView reloadData];
+            searchResultTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreSearchData)];
+        });
+    });
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -156,8 +175,10 @@
 #pragma mark - 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    self.currentSearchTerm = searchBar.text;
     self.filterPoems = [self searchPoemsWith:searchBar.text offset:0];
     UITableView *newTable = self.searchController.searchResultsTableView;
+    newTable.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreSearchData)];
     [newTable reloadData];
 }
 
