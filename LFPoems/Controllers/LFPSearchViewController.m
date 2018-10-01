@@ -14,7 +14,6 @@
 #import "LFPoem+LFStorage.h"
 #import "MJRefresh.h"
 
-// 加一个LoadMore
 @interface LFPSearchViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic, strong) NSArray *poems;

@@ -17,9 +17,9 @@
 #import "LFPoem+LFStorage.h"
 
 // TODO: 1. 数据展示优化. 比如收藏图标.
-// 2. 这页需要加搜索吗？(可以暂时不加)
-// 3. 最重要的是数据优化；数据要重新组建好！
-// 4. 下一版本可以增加按诗歌类型搜索分类! 或者将类型加在cell里!
+// 2. 这页需要加搜索吗？(可以暂时不加) (Ignored)
+// 3. 最重要的是数据优化；数据要重新组建好！ 80%
+// 4. 下一版本可以增加按诗歌类型搜索分类! 或者将类型加在cell里! Ignored
 @interface LFPHomeViewContorller () <UITableViewDataSource, UITableViewDelegate, LFPoemActionDelegate>
 
 @property (nonatomic, strong) UITableView *table;

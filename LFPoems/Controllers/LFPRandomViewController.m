@@ -14,7 +14,7 @@
 #import "LFPoemTestHelper.h"
 #import "LFConstants.h"
 
-// 重点：1. 数据整理；2. 推荐功能。 3. Tags
+// 重点：1. 数据整理；80% finished 3. Tags Next Version
 @interface LFPRandomViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *candidatePoems;
