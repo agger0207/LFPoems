@@ -79,7 +79,7 @@
 
 - (void)loadTableView {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSArray *poems = [self searchPoemsWith:@""];
+        NSArray *poems = [self searchPoemsWith:@"" offset:0];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.poems = poems;
             [self.tableView reloadData];
@@ -98,13 +98,19 @@
     return poem;
 }
 
-- (NSArray *)searchPoemsWith:(NSString *)searchString {
-    return [LFPoem lf_searchPoems:searchString offset:0];
+- (NSArray *)searchPoemsWith:(NSString *)searchString offset:(NSInteger)offset {
+    return [LFPoem lf_searchPoems:searchString offset:offset];
 }
 
 - (void)loadMoreData {
-    NSLog(@"Loading More Data");
-//    self.tableView.mj_footer.hidden = YES;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *poems = [self searchPoemsWith:@"" offset:self.poems.count];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.poems = [self.poems arrayByAddingObjectsFromArray:poems];
+            [self.tableView reloadData];
+            self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        });
+    });
 }
 
 #pragma mark - UITableViewDataSource
@@ -150,7 +156,7 @@
 #pragma mark - 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    self.filterPoems = [self searchPoemsWith:searchBar.text];
+    self.filterPoems = [self searchPoemsWith:searchBar.text offset:0];
     UITableView *newTable = self.searchController.searchResultsTableView;
     [newTable reloadData];
 }
