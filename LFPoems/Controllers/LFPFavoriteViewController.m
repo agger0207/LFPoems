@@ -13,11 +13,10 @@
 #import "LFPoet.h"
 #import "LFPoem.h"
 #import "LFPoem+LFStorage.h"
-#import "MJRefresh.h"
 
 // TODO: 1. 展示空Table Review的提示.
 // 2. 空Table Review的时候不要有分割线
-// 3. 下拉强制刷新
+// 3. 下拉强制刷新. Done
 // 4. 这个页面要引入刷新机制. 可以用NotificationCenter. 或者直接用一个全局变量判断即可.
 
 @interface LFPFavoriteViewController ()
@@ -32,10 +31,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor redColor];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    [self.refreshControl addTarget:self action:@selector(loadNewData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     [self registerCells];
     [self loadTableView];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    self.tableView.mj_header.lastUpdatedTimeLabel.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,8 +92,17 @@
 #pragma mark - Refresh Data
 
 - (void)loadNewData {
-    NSLog(@"下拉刷新中");
-    [self loadTableView];
+    if (self.refreshControl.refreshing) {
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"加载中..."];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSArray *poems = [self favoritePoems];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.poems = poems;
+                [self.refreshControl endRefreshing];
+                [self.tableView reloadData];
+            });
+        });
+    }
 }
 
 #pragma mark - UITableViewDataSource
