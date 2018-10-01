@@ -13,6 +13,7 @@
 #import "LFPoet.h"
 #import "LFPoem.h"
 #import "LFPoem+LFStorage.h"
+#import "MJRefresh.h"
 
 // TODO: 1. 展示空Table Review的提示.
 // 2. 空Table Review的时候不要有分割线
@@ -33,6 +34,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self registerCells];
     [self loadTableView];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    self.tableView.mj_header.lastUpdatedTimeLabel.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,6 +83,13 @@
 
 - (NSArray *)favoritePoems {
     return [LFPoem lf_loadFavoritePoems];
+}
+
+#pragma mark - Refresh Data
+
+- (void)loadNewData {
+    NSLog(@"下拉刷新中");
+    [self loadTableView];
 }
 
 #pragma mark - UITableViewDataSource
