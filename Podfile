@@ -5,6 +5,6 @@ target 'LFPoems' do
     pod 'YYText'
     pod 'Masonry'
     pod 'FMDB'
-    pod 'MJRefresh'
+    pod 'MJRefresh', '~> 3.1.15'
     pod 'RETableViewManager', '~> 1.6'  #快速创建表单
 end

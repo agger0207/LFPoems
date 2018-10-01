@@ -28,7 +28,7 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - Masonry (0.6.3)
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.15.7)
   - REFormattedNumberField (1.1.5)
   - RETableViewManager (1.6):
     - REFormattedNumberField (~> 1.1.5)
@@ -43,7 +43,7 @@ PODS:
 DEPENDENCIES:
   - FMDB
   - Masonry
-  - MJRefresh
+  - MJRefresh (~> 3.1.15)
   - RETableViewManager (~> 1.6)
   - YTKNetwork
   - YYModel
@@ -54,7 +54,7 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   REFormattedNumberField: be3d55dd709f65541fb26b7e1709da07903147f8
   RETableViewManager: 9667ecb29c005c32df40a1dd1828224840a351a2
   REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
@@ -62,6 +62,6 @@ SPEC CHECKSUMS:
   YYModel: 8e33b78edac403cc132d017cf022d03f38221470
   YYText: 4570135dac2146b897c544171d5baf2985c5ba80
 
-PODFILE CHECKSUM: 1b1e3ef65ec44c5c2d69dc362e29dc87be06dbcf
+PODFILE CHECKSUM: b3edfbad908c7684d6cf9a3788fa8beafe211ba6
 
 COCOAPODS: 1.1.1
