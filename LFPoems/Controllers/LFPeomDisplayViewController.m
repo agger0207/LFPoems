@@ -15,6 +15,7 @@
 #import "Masonry.h"
 #import "LFPoemDetailBaseCell.h"
 #import "LFPoem+LFStorage.h"
+#import "LFConstants.h"
 
 // TODO: 界面显示优化
 @interface LFPeomDisplayViewController () <UITableViewDataSource, UITableViewDelegate, LFPoemControlBarDelegate>
@@ -104,12 +105,13 @@
 #pragma mark - Action
 
 - (IBAction)onClickRightBtn:(id)sender {
-#ifdef DEBUG
-    [self.poem lf_markAsRecommended:!self.poem.isRecommended];
-#else
+//#ifdef DEBUG
+//    [self.poem lf_markAsRecommended:!self.poem.isRecommended];
+//#else
     BOOL wasFavorite = self.poem.isFavorite;
     [self.poem lf_markAsFavorite:!wasFavorite];
-#endif
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLFFavoriteChanged object:nil];
+//#endif
     self.navigationItem.rightBarButtonItem.title = self.poem.isFavorite ? @"取消收藏" : @"收藏";
 }
 

@@ -13,6 +13,7 @@
 #import "LFPoet.h"
 #import "LFPoem.h"
 #import "LFPoem+LFStorage.h"
+#import "LFConstants.h"
 
 // TODO: 1. 展示空Table Review的提示.
 // 2. 空Table Review的时候不要有分割线
@@ -22,6 +23,7 @@
 @interface LFPFavoriteViewController ()
 
 @property (nonatomic, strong) NSArray *poems;
+@property (nonatomic, assign) BOOL isDataChanged;
 
 @end
 
@@ -40,6 +42,21 @@
     
     [self registerCells];
     [self loadTableView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDataChanged:) name:kLFFavoriteChanged object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear in favorite");
+    if (self.isDataChanged) {
+        self.isDataChanged = NO;
+        [self loadTableView];
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +92,7 @@
         NSArray *poems = [self favoritePoems];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.poems = poems;
+            self.isDataChanged = NO;
             [self.tableView reloadData];
         });
     });
@@ -98,11 +116,16 @@
             NSArray *poems = [self favoritePoems];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.poems = poems;
+                self.isDataChanged = NO;
                 [self.refreshControl endRefreshing];
                 [self.tableView reloadData];
             });
         });
     }
+}
+
+- (void)onDataChanged:(id)sender {
+    self.isDataChanged = YES;
 }
 
 #pragma mark - UITableViewDataSource

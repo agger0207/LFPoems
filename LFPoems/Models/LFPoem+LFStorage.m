@@ -107,6 +107,7 @@ NSString * const kColumeModelWasDisplayed = @"displayed";
     }
     
     NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET favorite = %@ WHERE id = %@", kTablePoems, isFavorite ? @"1": @"0", @(self.poemId)];
+    NSLog(@"Mark as Favorite: %@", sql);
     [LF_POEMS_DB executeUpdate:sql];
     self.isFavorite = isFavorite;
     return YES;

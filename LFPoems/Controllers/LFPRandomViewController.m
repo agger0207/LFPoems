@@ -12,6 +12,7 @@
 #import "LFPoem.h"
 #import "LFPoemContentCell.h"
 #import "LFPoemTestHelper.h"
+#import "LFConstants.h"
 
 // 重点：1. 数据整理；2. 推荐功能。 3. Tags
 @interface LFPRandomViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -133,6 +134,7 @@
 - (IBAction)onClickRightBtn:(id)sender {
     BOOL wasFavorite = self.currentPoem.isFavorite;
     [self.currentPoem lf_markAsFavorite:!wasFavorite];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLFFavoriteChanged object:nil];
     self.navigationItem.rightBarButtonItem.title = self.currentPoem.isFavorite ? @"取消收藏" : @"收藏";
 }
 

@@ -92,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		034C63C0216072E000D3DB4F /* tangshi.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tangshi.sql; path = Utils/Database/tangshi.sql; sourceTree = "<group>"; };
+		034C63C32161CE7100D3DB4F /* LFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFConstants.h; sourceTree = "<group>"; };
 		035508AD2157569F00D819E0 /* tangshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = tangshi.db; path = Utils/Database/tangshi.db; sourceTree = "<group>"; };
 		035508AF2157591400D819E0 /* LFPoem+LFStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LFPoem+LFStorage.h"; path = "Models/LFPoem+LFStorage.h"; sourceTree = "<group>"; };
 		035508B02157591400D819E0 /* LFPoem+LFStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LFPoem+LFStorage.m"; path = "Models/LFPoem+LFStorage.m"; sourceTree = "<group>"; };
@@ -225,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034C63C22161CE4F00D3DB4F /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				034C63C32161CE7100D3DB4F /* LFConstants.h */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		037D5BF71C8BD4C500760BB7 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +420,7 @@
 		E6DE0C811C1AE94E0066017B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				034C63C22161CE4F00D3DB4F /* Constant */,
 				037D5BF71C8BD4C500760BB7 /* CommonViews */,
 				E6DE0D1E1C1AF8860066017B /* UIHelper */,
 				E6DE0CDC1C1AF0F30066017B /* Categories */,
@@ -670,7 +680,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		988DD9AD60330ECF4BA2DA3E /* [CP] Copy Pods Resources */ = {
