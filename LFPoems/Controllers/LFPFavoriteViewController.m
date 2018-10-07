@@ -18,7 +18,7 @@
 // TODO: 1. 展示空Table Review的提示.
 // 2. 空Table Review的时候不要有分割线
 
-@interface LFPFavoriteViewController ()
+@interface LFPFavoriteViewController () <LFPoemActionDelegate>
 
 @property (nonatomic, strong) NSArray *poems;
 @property (nonatomic, assign) BOOL isDataChanged;
@@ -154,6 +154,7 @@
     LFPoem *poem = [self poemAtRow:indexPath.row inSection:indexPath.section];
     LFPeomDisplayViewController *controller = [[LFPeomDisplayViewController alloc] init];
     controller.poem = poem;
+    controller.poemDelegate = self;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -172,7 +173,29 @@
 #pragma mark - Actions
 
 - (IBAction)addFavorite:(id)sender {
-    
+    // 这个功能下一版本再加
+}
+
+#pragma mark - LFPoemActionDelegate
+
+- (LFPoem *)poemAtIndex:(NSIndexPath *)index {
+    return [self poemAtRow:index.row inSection:index.section];
+}
+
+- (NSIndexPath *)nextIndex:(NSIndexPath *)index {
+    return [NSIndexPath indexPathForRow:index.row + 1 inSection:0];
+}
+
+- (NSIndexPath *)prevIndex:(NSIndexPath *)index {
+    return [NSIndexPath indexPathForRow:index.row - 1 inSection:0];
+}
+
+- (BOOL)isLastIndex:(NSIndexPath *)index {
+    return index.section == 0 && index.row + 1 == [self.poems count];
+}
+
+- (BOOL)isFirstIndex:(NSIndexPath *)index {
+    return index.section == 0 && index.row == 0;
 }
 
 @end

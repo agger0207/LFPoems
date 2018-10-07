@@ -129,6 +129,7 @@
 - (IBAction)onClickLeftButton:(id)sender {
     self.currentPoem = [self randomSelectPoem];
     [self updateToPoem:self.currentPoem];
+    self.navigationItem.rightBarButtonItem.title = self.currentPoem.isFavorite ? @"取消收藏" : @"收藏";
 }
 
 - (IBAction)onClickRightBtn:(id)sender {
