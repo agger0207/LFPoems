@@ -67,34 +67,9 @@
     
     // Add sections and items
     [self.manager addSection:[self basicSection]];
-    [self.manager addSection:[self addtionalSection]];
 }
 
 - (RETableViewSection *)basicSection {
-    RETableViewSection *section = [RETableViewSection section];
-    // 只有设置一个极小的值才可以去掉Header.
-    section.headerHeight = 0.1;
-    __weak LFPSettingViewController *weakSelf = self;
-#warning 后续考虑展示什么内容
-    [section addItem:[RETableViewItem itemWithTitle:@"操作说明" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
-        [item deselectRowAnimated:YES];
-        //        [weakSelf.navigationController pushViewController:[[ControlsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-    }]];
-    
-    [section addItem:[REBoolItem itemWithTitle:@"消息提醒" value:self.enableNotification switchValueChangeHandler:^(REBoolItem *item) {
-        weakSelf.enableNotification = item.value;
-    }]];
-    
-    RESegmentedItem *viewItem = [RESegmentedItem itemWithTitle:@"视图模式" segmentedControlTitles:@[@"正常", @"夜间"] value:0 switchValueChangeHandler:^(RESegmentedItem *item) {
-#warning TODO 切换模式
-    }];
-    viewItem.tintColor = [UIColor blueColor];
-    [section addItem:viewItem];
-    
-    return section;
-}
-
-- (RETableViewSection *)addtionalSection {
     RETableViewSection *section = [RETableViewSection section];
     section.headerTitle = @"技术支持";
     section.headerHeight = 0;
@@ -102,17 +77,14 @@
 #warning 后续考虑展示什么内容. 数据组织可以进一步优化.
     [section addItem:[RETableViewItem itemWithTitle:@"问题反馈" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
         [item deselectRowAnimated:YES];
-        //        [weakSelf.navigationController pushViewController:[[ControlsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
     }]];
     
     [section addItem:[RETableViewItem itemWithTitle:@"给我好评" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
         [item deselectRowAnimated:YES];
-        //        [weakSelf.navigationController pushViewController:[[ListViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES];
     }]];
     
     [section addItem:[RETableViewItem itemWithTitle:@"版本信息" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
         [item deselectRowAnimated:YES];
-        //        [weakSelf.navigationController pushViewController:[[EditingViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
     }]];
     
     [section addItem:[RETableViewItem itemWithTitle:@"关于我们" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
