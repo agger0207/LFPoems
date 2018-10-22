@@ -14,7 +14,7 @@
 #import "LFPoem+LFStorage.h"
 #import "MJRefresh.h"
 
-@interface LFPSearchViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface LFPSearchViewController () <UISearchBarDelegate, UISearchDisplayDelegate, LFPoemActionDelegate>
 
 @property (nonatomic, strong) NSArray *poems;
 @property (nonatomic, strong) NSArray *filterPoems;
@@ -114,7 +114,7 @@
 }
 
 - (void)loadMoreSearchData {
-    if (self.filterPoems.count % 100 != 0) {
+    if (self.filterPoems.count % 100 != 0 || self.filterPoems.count == 0) {
         // 已经全部加载完毕，不需要展示Load More
         self.searchController.searchResultsTableView.mj_footer.hidden = TRUE;
         return;
@@ -155,6 +155,7 @@
     
     LFPoem *poem = [self poemAtRow:indexPath.row inSection:indexPath.section inTableView:tableView];
     LFPeomDisplayViewController *controller = [[LFPeomDisplayViewController alloc] init];
+    controller.poemDelegate = self;
     controller.poem = poem;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
@@ -186,6 +187,30 @@
 - (void)searchDisplayController: (UISearchDisplayController *)controller
  willShowSearchResultsTableView: (UITableView *)searchTableView {
     searchTableView.rowHeight = self.tableView.rowHeight;
+}
+
+#pragma mark - LFPoemActionDelegate
+
+- (LFPoem *)poemAtIndex:(NSIndexPath *)index {
+    UITableView *curTableView = self.currentSearchTerm && self.currentSearchTerm.length > 0 ? self.searchController.searchResultsTableView : self.tableView;
+    return [self poemAtRow:index.row inSection:index.section inTableView:curTableView];
+}
+
+- (NSIndexPath *)nextIndex:(NSIndexPath *)index {
+    return [NSIndexPath indexPathForRow:index.row + 1 inSection:0];
+}
+
+- (NSIndexPath *)prevIndex:(NSIndexPath *)index {
+    return [NSIndexPath indexPathForRow:index.row - 1 inSection:0];
+}
+
+- (BOOL)isLastIndex:(NSIndexPath *)index {
+    NSArray *poems = self.currentSearchTerm && self.currentSearchTerm.length > 0 ? self.filterPoems : self.poems;
+    return index.section == 0 && index.row + 1 == [poems count];
+}
+
+- (BOOL)isFirstIndex:(NSIndexPath *)index {
+    return index.section == 0 && index.row == 0;
 }
 
 @end
